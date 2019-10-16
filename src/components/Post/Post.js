@@ -6,9 +6,9 @@ class Post extends Component {
     render() {
         return (
             <article className="Post">
-                <h1 className="Info">Title</h1>
+                <h1 className="Info"> {this.props.title} </h1>
                 <div>
-                    <div className="Title">Author</div>
+                    <div className="Title"> {this.props.author} </div>
                 </div>
             </article>
         )
