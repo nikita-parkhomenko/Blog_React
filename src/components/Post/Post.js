@@ -5,7 +5,7 @@ import './Post.css';
 class Post extends Component {
     render() {
         return (
-            <article className="Post">
+            <article onClick={this.props.selected} className="Post">
                 <h1 className="Info"> {this.props.title} </h1>
                 <div>
                     <div className="Title"> {this.props.author} </div>

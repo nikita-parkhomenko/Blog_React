@@ -10,20 +10,26 @@ import NewPost from '../../components/NewPost/NewPost';
 class Blog extends Component {
 
     state = {
-        posts: []
+        posts: [],
+        selectedPost: null
     }
 
     componentDidMount() {
         axios
             .get('http://jsonplaceholder.typicode.com/posts')
             .then( response => {
-                let posts = response.data.map( post => {
+                let posts = response.data.slice(0, 4);
+                posts = posts.map( post => {
                     return {...post, author: 'Nikita'}
                 });
-                posts = posts.slice(0, 4);
                 this.setState({ posts: posts })
             })
             .catch( error => console.log(error))
+    }
+
+    selectedPostHandler = (id) => {
+        this.setState({selectedPost: id})
+        console.log(id)
     }
 
 
@@ -31,7 +37,8 @@ class Blog extends Component {
         let posts = <p> We dont have any Posts. </p>;
         if (this.state.posts) {
             posts = this.state.posts.map( post => {
-                return <Post key={post.id} title={post.title} author={post.author} />
+                return <Post selected={ () => this.selectedPostHandler(post.id)}
+                 key={post.id} title={post.title} author={post.author} />
             })
         }
 
@@ -41,7 +48,7 @@ class Blog extends Component {
                     {posts}
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost id={this.state.selectedPost} />
                 </section>
                 <section>
                     <NewPost />
