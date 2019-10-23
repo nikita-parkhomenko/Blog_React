@@ -1,7 +1,23 @@
-.Posts {
+
+.Blog ul {
+    width: 100%;
     display: flex;
-    flex-flow: row wrap;
     justify-content: center;
-    width: 80%;
-    margin: auto;
+    background-color: rgba(68, 196, 228, 0.315);
+    margin-top: 0;
+    padding-left: 0;
+}
+.Blog li {
+    list-style: none;
+    margin: 20px 30px;
+}
+.Blog li a {
+    text-decoration: none;
+    color: rgb(49, 20, 156);
+    font-size: 22px;
+}
+.Blog li a:hover,
+.Blog li a:active,
+.Blog li .active {
+    color: rgb(207, 13, 165);
 }
