@@ -25,6 +25,7 @@ class NewPost extends Component {
             .then( resp => {
                 console.log(resp);
                 this.setState({ redirect: true })
+                // this.props.history.push('/');
             })   
             .catch( err => console.log(err))
     }
